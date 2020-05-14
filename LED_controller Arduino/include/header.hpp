@@ -1,9 +1,17 @@
 #pragma once
 
-#include "Arduino_FreeRTOS.h"
-//#include "controls.hpp"
-#include <Arduino.h>
-
-#include "BasicController.hpp"
 #include "LedController.hpp"
-#include "setup.hpp"
+
+#include "Parameter.hpp"
+#include "ParameterAdder.hpp"
+#include "ParameterChanger.hpp"
+#include "ParameterMultiplier.hpp"
+#include "ParametersGetter.hpp"
+
+#include "Actuator.hpp"
+#include "Controllers.hpp"
+#include "Matrix.hpp"
+
+#include "Arduino_FreeRTOS.h"
+
+#include <Arduino.h>
