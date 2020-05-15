@@ -4,7 +4,6 @@
 #include "Matrix.hpp"
 #include "ParameterChanger.hpp"
 
-
 namespace LED
 {
 template <int par_num, int act_num> class LedController
@@ -30,8 +29,13 @@ template <int par_num, int act_num> class LedController
     }
     void changeActuator()
     {
-        if (++current_act != act_size)
+        if (++current_act >= act_size)
             current_act = 0;
+    }
+    void changeActuator(int index)
+    {
+        if (index < act_size)
+            current_act = index;
     }
     void update()
     {
@@ -45,6 +49,8 @@ template <int par_num, int act_num> class LedController
     {
         parameters[index]->decrease();
     }
-    explicit LedController(Matrix &matrix) :matrix(matrix) {}
+    explicit LedController(const Matrix &matrix) : matrix(matrix)
+    {
+    }
 };
 } // namespace LED
