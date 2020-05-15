@@ -57,7 +57,7 @@
 			"utility": "cpp",
 			"typeinfo": "cpp"
 		},
-		"C_Cpp.clang_format_style": "Visual Studio",
+		"C_Cpp.clang_format_style": "Microsoft",
 		"clang.executable": "C:\\LLVM\\bin",
 		"clang-format.fallbackStyle": "Microsoft",
 		"C_Cpp.clang_format_fallbackStyle": ""

@@ -1,11 +1,15 @@
 #ifndef UNIT_TEST
 #include "header.hpp"
 
-#define Z0_PIN 0
-#define Z1_PIN 1
-#define Z2_PIN 2
-#define Z3_PIN 3
-#define Z4_PIN 4
+/*----------------------------------------------------------------------*/
+/* things to be changed */
+
+#define Z0_PIN 16
+#define Z1_PIN 15
+#define Z2_PIN 11
+#define Z3_PIN 12
+#define Z4_PIN 5
+
 /*----------------------------------------------------------------------*/
 /* functions declarations */
 

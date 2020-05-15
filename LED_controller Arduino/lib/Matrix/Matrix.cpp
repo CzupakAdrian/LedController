@@ -1,5 +1,50 @@
 #include "Matrix.hpp"
 
+float LED::Matrix::minX() const
+{
+    return min_X;
+}
+float LED::Matrix::minY() const
+{
+    return min_Y;
+}
+float LED::Matrix::minZ() const
+{
+    return min_Z;
+}
+float LED::Matrix::maxX() const
+{
+    return max_X;
+}
+float LED::Matrix::maxY() const
+{
+    return max_Y;
+}
+float LED::Matrix::maxZ() const
+{
+    return max_Z;
+}
+uint8_t LED::Matrix::size() const
+{
+    return count;
+}
+float LED::Matrix::x(const int index) const
+{
+    return bulbs[index]->x;
+}
+float LED::Matrix::y(const int index) const
+{
+    return bulbs[index]->y;
+}
+float LED::Matrix::z(const int index) const
+{
+    return bulbs[index]->z;
+}
+int LED::Matrix::pin(const int index) const
+{
+    return bulbs[index]->pin;
+}
+
 bool LED::Matrix::addBulb(const float x, const float y, const float z, const int pin)
 {
     if (count == max_size)

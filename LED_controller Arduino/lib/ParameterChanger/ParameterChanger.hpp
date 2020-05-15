@@ -1,5 +1,7 @@
 #pragma once
 
+#define make_changer(parameter) (static_cast<LED::ParameterChanger *>(parameter))
+
 namespace LED
 {
 class ParameterChanger
@@ -9,5 +11,3 @@ class ParameterChanger
     virtual void decrease() = 0;
 };
 } // namespace LED
-
-#define make_changer(parameter)  (static_cast<LED::ParameterChanger *>(parameter))

@@ -1,4 +1,4 @@
 {
-    "C_Cpp.clang_format_fallbackStyle": "",
+    "C_Cpp.clang_format_fallbackStyle": "Microsoft",
     "cmake.configureOnOpen": false
 }

@@ -1,12 +1,13 @@
 #include "ParameterAdder.hpp"
+#include "ParameterChanger.hpp"
+#include "ParameterGetter.hpp"
 #include "ParameterMultiplier.hpp"
-#include "ParametersChanger.hpp"
-#include "ParametersGetter.hpp"
 #include "unity.h"
 
-#include "Matrix.hpp"
-#include "IntensityCalculator.hpp"
+#include "../lib/Matrix/Matrix.hpp"
+#include "Actuator.hpp"
 #include "Controllers.hpp"
+
 
 #ifdef UNIT_TEST
 
