@@ -4,38 +4,13 @@
 #include "ParameterMultiplier.hpp"
 #include "unity.h"
 
-#include "../lib/Matrix/Matrix.hpp"
-#include "Actuator.hpp"
-#include "Controllers.hpp"
-
-
 #ifdef UNIT_TEST
-
-void test_Calculators(void)
-{
-    auto sigma = new LED::ParameterAdder<float>(0.5, 0.4, 0.6, 0.1);
-    auto freq = new LED::ParameterMultiplier<float>(0.5, 0.4, 0.6, 0.1);
-    auto intensity = new LED::ParameterAdder<float>(201, 0, 255, 10);
-    LED::IntensityCalculator *raiser;
-    LED::IntensityCalculator *faller;
-    LED::IntensityCalculator *passer;
-    LED::IntensityCalculator *stiller;
-    {
-        LED::ParametersGetter<float> *sigmaGetter = sigma;
-        LED::ParametersGetter<float> *freqGetter = freq;
-        LED::ParametersGetter<float> *intensityGetter = intensity;
-        raiser = new LED::Raiser(sigmaGetter, freqGetter, intensityGetter);
-        faller = new LED::Faller(sigmaGetter, freqGetter, intensityGetter);
-        passer = new LED::Passer(sigmaGetter, freqGetter, intensityGetter);
-        stiller = new LED::Stiller(intensityGetter);
-    }
-}
 
 void test_ParameterAdder(void)
 {
     auto sigma = new LED::ParameterAdder<float>(0.5, 0.4, 0.6, 0.1);
-    LED::ParameterChanger *changer = sigma;
-    LED::ParametersGetter<float> *getter = sigma;
+    auto *changer = make_changer(sigma);
+    auto *getter = make_getter(sigma);
     TEST_ASSERT_EQUAL(0.5, getter->get());
     changer->increase();
     TEST_ASSERT_EQUAL(0.6, getter->get());
@@ -52,8 +27,8 @@ void test_ParameterAdder(void)
 void test_ParameterMultiplier(void)
 {
     auto sigma = new LED::ParameterMultiplier<float>(0.5, 0.2, 1, 2);
-    LED::ParameterChanger *changer = sigma;
-    LED::ParametersGetter<float> *getter = sigma;
+    auto *changer = make_changer(sigma);
+    auto *getter = make_getter(sigma);
     TEST_ASSERT_EQUAL(0.5, getter->get());
     changer->increase();
     TEST_ASSERT_EQUAL(1, getter->get());
@@ -72,7 +47,6 @@ void process()
     UNITY_BEGIN();
     RUN_TEST(test_ParameterAdder);
     RUN_TEST(test_ParameterMultiplier);
-    test_Calculators();
     UNITY_END();
 }
 

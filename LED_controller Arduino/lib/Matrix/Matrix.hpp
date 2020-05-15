@@ -1,6 +1,11 @@
 #pragma once
 
+#ifdef ARDUINO
 #include <Arduino.h>
+#else
+typedef unsigned char uint8_t;
+#endif
+
 #define max_size 5
 
 namespace LED

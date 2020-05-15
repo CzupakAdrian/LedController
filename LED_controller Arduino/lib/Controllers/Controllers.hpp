@@ -3,7 +3,12 @@
 #include "Actuator.hpp"
 #include "Matrix.hpp"
 #include "ParameterGetter.hpp"
+
+#ifdef ARDUINO
 #include <Arduino.h>
+#else
+typedef unsigned char uint8_t;
+#endif
 
 #define make_raiser(sigma, freq, intensity)                                                                            \
     (new LED::Raiser(make_getter(sigma), make_getter(freq), make_getter(intensity)))
