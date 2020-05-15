@@ -13,9 +13,20 @@ class ParameterAdder : public ParameterChanger, public ParameterGetter<par_type>
     par_type step;
 
   public:
-    void increase() override;
-    void decrease() override;
-    par_type get() const override;
+    void increase() override
+    {
+        if (this->value + this->step <= this->upper_bound)
+            this->value += this->step;
+    }
+    void decrease() override
+    {
+        if (this->value - this->step >= this->lower_bound)
+            this->value -= this->step;
+    }
+    par_type get() const override
+    {
+        return this->value;
+    }
 
     ParameterAdder(const par_type &init_val, const par_type &lower_bound, const par_type &upper_bound,
                    const par_type &step)

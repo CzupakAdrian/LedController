@@ -18,12 +18,33 @@ template <int par_num, int act_num> class LedController
     int par_size{};
 
   public:
-    void add(Actuator *&&act);
-    void add(ParameterChanger *&&par);
-    void changeActuator();
-    void update();
-    void increase(const int index);
-    void decrease(const int index);
-    explicit LedController(Matrix &matrix);
+    void add(Actuator *&&act)
+    {
+        actuators[act_size] = act;
+        act_size++;
+    }
+    void add(ParameterChanger *&&par)
+    {
+        parameters[par_size] = par;
+        par_size++;
+    }
+    void changeActuator()
+    {
+        if (++current_act != act_size)
+            current_act = 0;
+    }
+    void update()
+    {
+        actuators[current_act]->update(matrix);
+    }
+    void increase(const int index)
+    {
+        parameters[index]->increase();
+    }
+    void decrease(const int index)
+    {
+        parameters[index]->decrease();
+    }
+    explicit LedController(Matrix &matrix) :matrix(matrix) {}
 };
 } // namespace LED
